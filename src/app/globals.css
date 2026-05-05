@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0d0d0d;
+  --accent: #7c3aed;
+  --accent-bright: #c026d3;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  /* Evita rolagem horizontal acidental por causa das ondas */
+  overflow-x: hidden; 
+}
+
+/* Animação que altera o formato da onda (morphing) */
+@keyframes waveFlow {
+  0% {
+    d: path("M-100,280 C200,180 400,420 700,260 S1100,140 1540,300");
+  }
+  50% {
+    d: path("M-100,320 C200,220 400,380 700,300 S1100,180 1540,260");
+  }
+  100% {
+    d: path("M-100,280 C200,180 400,420 700,260 S1100,140 1540,300");
+  }
+}
+
+/* Animação de flutuação e brilho */
+@keyframes wavePulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-8px);
+  }
+}
+
+.wave-line {
+  /* Combinando as duas animações para dar o efeito de vida */
+  animation: wavePulse 6s ease-in-out infinite, waveFlow 10s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Animação de entrada para o conteúdo do Hero */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border-radius: 2px;
 }
