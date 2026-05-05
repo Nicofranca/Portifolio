@@ -1,3 +1,5 @@
+import Navbar from "@/components/Navbar";
+
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -21,7 +23,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#0d0d0d] antialiased">{children}</body>
+      <body className="bg-[#0d0d0d] antialiased">{children}
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
