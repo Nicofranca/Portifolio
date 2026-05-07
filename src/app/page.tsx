@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero'; // ajuste o caminho se necessário
 import Navbar from '@/components/Navbar';
+import Profile from '@/components/Profile';
 
 export default function Home() {
   return (
@@ -7,6 +8,8 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+
+      <Profile />
 
       {/* O resto do seu site vem aqui */}
       <section className="h-screen flex items-center justify-center text-gray-500">
